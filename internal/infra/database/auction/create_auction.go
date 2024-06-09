@@ -64,6 +64,7 @@ func (ar *AuctionRepository) checkIfAuctionStillOpen(ctx context.Context, auctio
 		for {
 			time.Sleep(time.Second)
 			if ar.isAuctionExpired(auction) {
+				fmt.Println("Entrou")
 				ar.AuctionStatusMutex.Lock()
 				update := bson.M{
 					"$set": bson.M{
